@@ -1,0 +1,6 @@
+{
+  "appId": "re.tpsoi.actionschantiers",
+  "appName": "Actions chantiers",
+  "webDir": "dist",
+  "android": { "backgroundColor": "#EDF0EC" }
+}

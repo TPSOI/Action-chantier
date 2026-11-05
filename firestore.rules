@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Seuls les utilisateurs connectés (comptes créés par toi dans la console) accèdent aux chantiers.
+    match /chantiers_actions/{id} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#EDF0EC">
+<title>Actions chantiers</title>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow" id="eyebrow">Suivi des actions</div>
+      <h1>Actions chantiers</h1>
+      <div class="today" id="today"></div>
+      <div class="userbar" id="userbar" hidden><span class="dot" id="netdot"></span><span id="userMail"></span><button class="linkbtn" type="button" id="btnLogout">Se déconnecter</button></div>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="actions">
+      <button class="btn" id="btnAddCh" type="button">+ Chantier</button>
+      <button class="btn primary" id="btnPdf" type="button">Exporter en PDF</button>
+    </div>
+  </header>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Entreprises"></nav>
+
+  <section class="panel" id="addChPanel" hidden>
+    <h3>Nouveau chantier</h3>
+    <div class="row">
+      <input class="field" id="newChName" placeholder="Nom du chantier (ex. OASIS)" autocomplete="off">
+      <button class="btn primary" type="button" id="addChGo">Ajouter</button>
+      <button class="btn ghost" type="button" id="cancelAddCh">Annuler</button>
+    </div>
+  </section>
+
+  <section class="panel" id="pdfPanel" hidden>
+    <h3>Export PDF</h3>
+    <div class="row"><span class="note">Chantiers à inclure :</span><button class="linkbtn" type="button" id="pdfAll">Tous</button><button class="linkbtn" type="button" id="pdfNone">Aucun</button></div>
+    <div class="picks" id="pdfPicks"></div>
+    <div class="row">
+      <label class="pick"><input type="checkbox" id="pdfDone"> Inclure les actions faites</label>
+      <label class="pick"><input type="checkbox" id="pdfNotes" checked> Inclure les notes</label>
+      <label class="pick"><input type="checkbox" id="pdfBreak"> Un chantier par page</label>
+    </div>
+    <div class="row">
+      <button class="btn primary" type="button" id="pdfGo">Générer le PDF</button>
+      <button class="btn ghost" type="button" id="pdfCancel">Fermer</button>
+      <span class="note" id="pdfMsg"></span>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <input class="field" id="search" type="search" placeholder="Rechercher (sujet, constat, action, responsable)…" autocomplete="off">
+    <select class="field" id="condFilter" aria-label="Filtrer par conducteur de travaux"><option value="">Tous les conducteurs</option></select>
+    <select class="field" id="chefFilter" aria-label="Filtrer par chef de chantier"><option value="">Tous les chefs</option></select>
+    <select class="field" id="respFilter" aria-label="Filtrer par responsable"><option value="">Tous les responsables</option></select>
+    <div class="seg" role="group" aria-label="Filtrer">
+      <button type="button" data-filter="all" aria-pressed="true">Toutes</button>
+      <button type="button" data-filter="todo" aria-pressed="false">Ouvertes</button>
+      <button type="button" data-filter="late" aria-pressed="false">En retard</button>
+      <button type="button" data-filter="urgent" aria-pressed="false">Urgentes</button>
+      <button type="button" data-filter="done" aria-pressed="false">Faites</button>
+    </div>
+  </div>
+  <div class="status" id="status">Chargement…</div>
+  <main class="board" id="board"></main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div class="login" id="login" hidden>
+  <form class="login-box" id="loginForm" autocomplete="on">
+    <div class="eyebrow">TPSOI · Citanéa · SPS</div>
+    <h2>Actions chantiers</h2>
+    <p>Connecte-toi pour retrouver les chantiers partagés sur tous tes appareils.</p>
+    <label>E-mail<input id="loginMail" type="email" autocomplete="username" required inputmode="email"></label>
+    <label>Mot de passe<input id="loginPass" type="password" autocomplete="current-password" required></label>
+    <div class="status" id="loginMsg" aria-live="polite"></div>
+    <button class="btn primary" type="submit" id="loginGo">Se connecter</button>
+    <button class="linkbtn" type="button" id="loginReset">Mot de passe oublié ?</button>
+  </form>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
